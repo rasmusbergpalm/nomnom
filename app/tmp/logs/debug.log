@@ -1,0 +1,8 @@
+2011-08-18 17:38:32 Debug: Notice (1024): Please change the value of 'Security.salt' in app/config/core.php to a salt value specific to your application in [C:\Program Files\xampp\htdocs\nomnom\cake\libs\debugger.php, line 694]
+2011-08-18 17:38:32 Debug: Notice (1024): Please change the value of 'Security.cipherSeed' in app/config/core.php to a numeric (digits only) seed value specific to your application in [C:\Program Files\xampp\htdocs\nomnom\cake\libs\debugger.php, line 698]
+2011-08-18 17:40:33 Debug: Notice (1024): Please change the value of 'Security.salt' in app/config/core.php to a salt value specific to your application in [C:\Program Files\xampp\htdocs\nomnom\cake\libs\debugger.php, line 694]
+2011-08-18 17:40:33 Debug: Notice (1024): Please change the value of 'Security.cipherSeed' in app/config/core.php to a numeric (digits only) seed value specific to your application in [C:\Program Files\xampp\htdocs\nomnom\cake\libs\debugger.php, line 698]
+2011-07-23 06:00:16 Notice: Notice (8): Undefined property: View::$Javascript in [/var/www/nomnom/app/views/layouts/clean.ctp, line 12]
+2011-07-23 06:00:49 Notice: Notice (8): Undefined property: View::$Html in [/var/www/nomnom/app/views/dashboards/view.ctp, line 7]
+2011-07-23 06:00:52 Notice: Notice (8): Undefined property: View::$Html in [/var/www/nomnom/app/views/dashboards/view.ctp, line 7]
+2011-07-23 06:01:29 Notice: Notice (8): Undefined property: View::$Session in [/var/www/nomnom/app/views/layouts/clean.ctp, line 30]
