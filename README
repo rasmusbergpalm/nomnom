@@ -1,28 +1,16 @@
-CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC. Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.
+Nomnom is a data aggregation and visualization tool
 
-The Cake Software Foundation - promoting development related to CakePHP
-http://cakefoundation.org/
+It uses mysql for the app itself and couchdb for the data
 
-CakePHP - the rapid development PHP framework
-http://www.cakephp.org
+INSTALL:
+install LAMP
+enable mod_rewrite
+run /app/config/schema/nomnom.sql
+checkout to /var/www/nomnom/
 
-Cookbook - user documentation for learning about CakePHP
-http://book.cakephp.org
+install couchdb
+create database 'data'
+create design doc: tagsdate with view: tagsdate with map:
+"function(doc) {\nif(doc.date){\nemit(doc.date, doc);\n}\nfor(var idx in doc.tags){\n emit(doc.tags[idx], doc);\n}\n\n}"
 
-API - quick reference to CakePHP
-http://api.cakephp.org
-
-The Bakery - everything CakePHP
-http://bakery.cakephp.org
-
-The Show - live and archived podcasts about CakePHP and more
-http://live.cakephp.org
-
-CakePHP TV - screen casts from events and video tutorials
-http://tv.cakephp.org
-
-CakePHP Google Group - community mailing list and forum
-http://groups.google.com/group/cake-php
-
-#cakephp on irc.freenode.net - chat with CakePHP developers
-irc://irc.freenode.net/cakephp
+Now give nomnom some data. He needs it!
