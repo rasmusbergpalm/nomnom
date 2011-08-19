@@ -36,6 +36,28 @@ class GettersController extends AppController {
 		}
 		if (!empty($this->data)) {
 			if ($this->Getter->save($this->data)) {
+                                App::import('Core', 'HttpSocket');
+                                $HttpSocket = new HttpSocket();
+                                $request = array(
+                                    'method' => 'POST',
+                                    'uri' => array(
+                                        'scheme' => 'http',
+                                        'host' => 'localhost',
+                                        'port' => 3000,
+                                        'user' => null,
+                                        'pass' => null,
+                                        'path' => '/setInterval/',
+                                        'query' => null,
+                                        'fragment' => null
+                                    ),
+                                    'version' => '1.1',
+                                    'body' => json_encode(array('id' => (int) $this->data['Getter']['id'], 'interval' => (int) $this->data['Getter']['interval'], 'code' => $this->data['Getter']['code'])),
+                                    'header' => array(
+                                        'Content-type' => 'application/json',
+                                    )
+                                );
+
+                                $results = $HttpSocket->request($request);
 				$this->Session->setFlash(__('The getter has been saved', true));
 				$this->redirect(array('action' => 'edit', $id));
 			} else {
