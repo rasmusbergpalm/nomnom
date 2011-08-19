@@ -37,6 +37,7 @@
                         <ul id="menu">
                             <li><?php echo $this->Html->link('Dashboards', '/dashboards')?></li>
                             <li><?php echo $this->Html->link('Items', '/items')?></li>
+                            <li><?php echo $this->Html->link('Getters', '/getters')?></li>
                         </ul>
 		</div>
 
