@@ -52,7 +52,10 @@ app.post('/setInterval/', function(req, res){
 });
 
 app.get('/status/:id', function(req, res){
-    res.send(streams[req.params.id].join('<br />'));
+    if(typeof streams[req.params.id] !== 'undefined'){
+        res.send(streams[req.params.id].join('<br />'));
+    }
+    
 });
 
 app.get('/clearInterval/:id', function(req, res){
