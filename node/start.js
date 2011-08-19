@@ -54,6 +54,8 @@ app.post('/setInterval/', function(req, res){
 app.get('/status/:id', function(req, res){
     if(typeof streams[req.params.id] !== 'undefined'){
         res.send(streams[req.params.id].join('<br />'));
+    }else{
+        res.send('');
     }
     
 });
