@@ -17,17 +17,16 @@ class DashboardsController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
-			$this->Dashboard->create();
-			if ($this->Dashboard->save($this->data)) {
-				$this->Session->setFlash(__('The dashboard has been saved', true));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The dashboard could not be saved. Please, try again.', true));
-			}
-		}
-		$items = $this->Dashboard->Item->find('list');
-		$this->set(compact('items'));
+            $this->data['Dashboard']['name'] = 'New Dashboard';
+
+            $this->Dashboard->create();
+            if ($this->Dashboard->save($this->data)) {
+                    $this->Session->setFlash(__('The dashboard has been saved', true));
+                    $this->redirect(array('action' => 'view', $this->Dashboard->getLastInsertId()));
+            } else {
+                    $this->Session->setFlash(__('The dashboard could not be saved. Please, try again.', true));
+            }
+		
 	}
 
 

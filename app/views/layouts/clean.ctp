@@ -21,8 +21,12 @@
                 echo $this->Javascript->link('codemirror/codemirror');
                 echo $this->Javascript->link('codemirror/javascript');
 
+                echo $this->Javascript->link('jquery.colorbox-min');
+
+
                 echo $this->Html->css('codemirror/codemirror');
                 echo $this->Html->css('codemirror/default');
+                echo $this->Html->css('colorbox');
 
 
 		echo $scripts_for_layout;
@@ -30,16 +34,32 @@
 	</head>
 
 	<body>
+        <?php
+            $nomnom_says = Array(
+                'MMmmmm... yummy in my tummy!',
+                'I need more data!'
+            );
+        ?>
 
 		<div id="header">
-                    <small style="float: right; color: white;">v. 0.1a</small>
-                        <h1>Nomnom</h1>
-                        <ul id="menu">
-                            <li><?php echo $this->Html->link('Dashboards', '/dashboards')?></li>
-                            <li><?php echo $this->Html->link('Items', '/items')?></li>
-                            <li><?php echo $this->Html->link('Getters', '/getters')?></li>
-                        </ul>
+                    <small style="float: right; color: white; text-align: right; padding-right: 5px;">
+                        <?php echo $nomnom_says[rand(0, count($nomnom_says)-1)]; ?>
+                        <br />
+                        Nomnom v. 0.1a
+                    </small>
+                    
+                    
+                    <ul id="menu">
+                        <li><?php echo $this->Html->link('Dashboards', '/dashboards')?></li>
+                        <li><?php echo $this->Html->link('Views', '/dbviews')?></li>
+                        <li><?php echo $this->Html->link('Getters', '/getters')?></li>
+                    </ul>
+                    
+
+                    
 		</div>
+
+                
 
 		<div id="content">
                     <div id="wrap">

@@ -252,14 +252,16 @@ dd {
     -moz-border-radius:5px;
     -webkit-border-radius:5px;
 }
-.dragbox h2{
+.dragbox .header{
     margin:0;
-    font-size:12px;
     padding:5px;
     background:#f0f0f0;
-    color:#000;
     border-bottom:1px solid #eee;
     cursor:move;
+}
+.dragbox h2{
+    font-size:12px;
+    color:#000;
 }
 .dragbox-content{
     background:#fff;

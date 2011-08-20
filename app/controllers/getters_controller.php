@@ -46,7 +46,7 @@ class GettersController extends AppController {
                                         'port' => 3000,
                                         'user' => null,
                                         'pass' => null,
-                                        'path' => '/setInterval/',
+                                        'path' => '/addInterval/',
                                         'query' => null,
                                         'fragment' => null
                                     ),
@@ -75,6 +75,9 @@ class GettersController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Getter->delete($id)) {
+                        App::import('Core', 'HttpSocket');
+                        $HttpSocket = new HttpSocket();
+                        $HttpSocket->get("/timer/deleteInterval/$id");
 			$this->Session->setFlash(__('Getter deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}

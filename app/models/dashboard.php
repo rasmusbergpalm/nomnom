@@ -1,6 +1,7 @@
 <?php
 class Dashboard extends AppModel {
 	var $name = 'Dashboard';
+	var $displayField = 'name';
 	var $validate = array(
 		'name' => array(
 			'notempty' => array(
@@ -15,21 +16,19 @@ class Dashboard extends AppModel {
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-	var $hasAndBelongsToMany = array(
-		'Item' => array(
-			'className' => 'Item',
-			'joinTable' => 'dashboards_items',
+	var $hasMany = array(
+		'Dbview' => array(
+			'className' => 'Dbview',
 			'foreignKey' => 'dashboard_id',
-			'associationForeignKey' => 'item_id',
-			'unique' => true,
+			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
 			'limit' => '',
 			'offset' => '',
+			'exclusive' => '',
 			'finderQuery' => '',
-			'deleteQuery' => '',
-			'insertQuery' => ''
+			'counterQuery' => ''
 		)
 	);
 

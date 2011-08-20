@@ -34,5 +34,6 @@
  */
 class AppController extends Controller {
     public $layout = 'clean';
+    public $components = array('RequestHandler');
     public $helpers = array('Form', 'Html', 'Javascript', 'Time', 'Session');
 }

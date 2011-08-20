@@ -1,5 +1,5 @@
 <?php
-/* Dashboard Fixture generated on: 2011-08-18 17:38:10 : 1313681890 */
+/* Dashboard Fixture generated on: 2011-08-20 21:21:58 : 1313868118 */
 class DashboardFixture extends CakeTestFixture {
 	var $name = 'Dashboard';
 

@@ -3,28 +3,34 @@
 
 <?php
 
-    foreach ($dashboard['Item'] as $item){
-        //debug($item);
-        $id = $item['id'];
-        $dbi_id = $item['DashboardsItem']['id'];
+    foreach ($dashboard['Dbview'] as $dbview){
+        //debug($dbview);
+        $id = $dbview['id'];
 
-        echo "<div class='dragbox' id='dragbox_$dbi_id' style='position: relative; left: ".$item['DashboardsItem']['left']."px; top: ".$item['DashboardsItem']['top']."px; width: ".($item['DashboardsItem']['width']+20)."px; height: ".($item['DashboardsItem']['height']+40)."px;'><h2>".$item['name']."</h2><div class='dragbox-content' id='item$id' style='width: ".$item['DashboardsItem']['width']."px; height: ".$item['DashboardsItem']['height']."px;'>Loading...</div></div>";
+        echo "<div class='dragbox' id='dragbox_$id'
+        style='position: relative; left: ".$dbview['left']."px; top: ".$dbview['top']."px; width: ".($dbview['width']+20)."px; height: ".($dbview['height']+40)."px;'>
+        <div class='header'>
+        <span>".$dbview['name']."</span>
+        <a class='editlink' href='/nomnom/dbviews/edit/$id' style='float: right;'>edit</a>
+        </div>
+        <div class='dragbox-content' id='view$id' style='clear: both; width: ".$dbview['width']."px; height: ".$dbview['height']."px;'>Loading...</div>
+        </div>";
     }
     ?>
     <script type='text/javascript'>
     <?php
-    foreach ($dashboard['Item'] as $item){
-        $id = $item['id'];
-        $code = $item['code'];
-        echo "$('#item$id').ready(function(){";
+    foreach ($dashboard['Dbview'] as $dbview){
+        $id = $dbview['id'];
+        $code = $dbview['code'];
+        echo "$('#view$id').ready(function(){";
+        echo "var viewid = 'view$id';";
         echo "$code";
-        echo "var params = ".$item['DashboardsItem']['params'].";";
-        echo "params.unshift('item$id');";
-        echo $item['name'].".apply(this, params);";
         echo "});";
     }
     ?>
         $(function(){
+            $('.editlink').colorbox({width:"80%", height:"100%"});
+
             $(".dragbox").draggable({
                 handle: "h2", 
                 grid: [20, 20],
@@ -33,7 +39,7 @@
                     var id = ui.helper.context.id.split('_')[1];
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo $this->Html->url('/DashboardsItems/update/')?>"+id,
+                        url: "<?php echo $this->Html->url('/dbviews/update/')?>"+id,
                         data: {data:{left: ui.position.left, top: ui.position.top}},
                         success: function(msg){
                             console.log(msg);
@@ -43,12 +49,12 @@
             });
             $(".dragbox").resizable({
                 stop: function(event, ui){
-                    console.log(ui);
+                    
                     var id = ui.helper.context.id.split('_')[1];
                     $.ajax({
                         type: "POST",
 
-                        url: "<?php echo $this->Html->url('/DashboardsItems/update/')?>"+id,
+                        url: "<?php echo $this->Html->url('/dbviews/update/')?>"+id,
                         data: {data:{width: ui.size.width, height: ui.size.height}},
                         success: function(msg){
                             console.log(msg);
