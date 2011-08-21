@@ -6,7 +6,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'a32',
+		'password' => '',
 		'database' => 'nomnom',
 		'prefix' => '',
 	);
