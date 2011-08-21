@@ -1,5 +1,4 @@
-<div class="dashboards view">
-<h2 style="margin-top:-20px;"><?php echo $dashboard['Dashboard']['name']; ?></h2>
+<?php echo $this->Html->link(__('Add view', true), array('controller' => 'dbviews','action' => 'add', $dashboard_id)); ?>
 
 <?php
 
@@ -11,7 +10,9 @@
         style='position: relative; left: ".$dbview['left']."px; top: ".$dbview['top']."px; width: ".($dbview['width']+20)."px; height: ".($dbview['height']+40)."px;'>
         <div class='header'>
         <span>".$dbview['name']."</span>
+        <a href='/nomnom/dbviews/delete/$id' style='float: right; margin-left: 10px;'>X</a>
         <a class='editlink' href='/nomnom/dbviews/edit/$id' style='float: right;'>edit</a>
+        
         </div>
         <div class='dragbox-content' id='view$id' style='clear: both; width: ".$dbview['width']."px; height: ".$dbview['height']."px;'>Loading...</div>
         </div>";
@@ -32,7 +33,7 @@
             $('.editlink').colorbox({width:"80%", height:"100%"});
 
             $(".dragbox").draggable({
-                handle: "h2", 
+                handle: ".header",
                 grid: [20, 20],
                 stop: function(event, ui){
                     console.log(ui);
@@ -64,5 +65,3 @@
             });
         });
     </script>
-		
-</div>

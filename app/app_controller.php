@@ -34,6 +34,12 @@
  */
 class AppController extends Controller {
     public $layout = 'clean';
-    public $components = array('RequestHandler');
+    public $components = array('RequestHandler', 'Session');
     public $helpers = array('Form', 'Html', 'Javascript', 'Time', 'Session');
+
+    function beforeFilter(){
+        $this->loadModel('Dashboard');
+        $this->set('dblist', $this->Dashboard->find('list'));
+    }
+
 }

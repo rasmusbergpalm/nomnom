@@ -22,22 +22,60 @@
                 echo $this->Javascript->link('codemirror/javascript');
 
                 echo $this->Javascript->link('jquery.colorbox-min');
-
+                echo $this->Javascript->link('highstock');
+                //echo $this->Javascript->link('highcharts');
+                echo $this->Javascript->link('jquery.editable-1.3.3.min');
 
                 echo $this->Html->css('codemirror/codemirror');
                 echo $this->Html->css('codemirror/default');
                 echo $this->Html->css('colorbox');
+                echo $this->Html->css('topnav');
 
 
 		echo $scripts_for_layout;
             ?>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    window.setTimeout(function(){
+                        $('#flashMessage').toggle('slow');
+                    }, 5000);
+
+                    $("ul.subnav").parent().append("<span></span>"); //Only shows drop down trigger when js is enabled (Adds empty span tag after ul.subnav*)
+
+                    $("ul.topnav li span").click(function() { //When trigger is clicked...
+
+                            //Following events are applied to the subnav itself (moving subnav up and down)
+                            $(this).parent().find("ul.subnav").slideDown('fast').show(); //Drop down the subnav on click
+
+                            $(this).parent().hover(function() {
+                            }, function(){
+                                    $(this).parent().find("ul.subnav").slideUp('slow'); //When the mouse hovers out of the subnav, move it back up
+                            });
+
+                            //Following events are applied to the trigger (Hover events for the trigger)
+                            }).hover(function() {
+                                    $(this).addClass("subhover"); //On hover over, add class "subhover"
+                            }, function(){	//On Hover Out
+                                    $(this).removeClass("subhover"); //On hover out, remove class "subhover"
+                    });
+
+                });
+
+            </script>
+
 	</head>
 
 	<body>
+        <?php echo $this->Session->flash(); ?>
         <?php
             $nomnom_says = Array(
                 'MMmmmm... yummy in my tummy!',
-                'I need more data!'
+                'I need more data!',
+                'I like data!',
+                'Have you ever tasted latency data? Mmmm...',
+                'I wonder if that bit over there is eddible...',
+                'Don\'t worry I won\'t munch on the views.. much.',
+                'Everything is fine! Nothing is ruined!'
             );
         ?>
 
@@ -47,23 +85,30 @@
                         <br />
                         Nomnom v. 0.1a
                     </small>
-                    
-                    
-                    <ul id="menu">
-                        <li><?php echo $this->Html->link('Dashboards', '/dashboards')?></li>
-                        <li><?php echo $this->Html->link('Views', '/dbviews')?></li>
-                        <li><?php echo $this->Html->link('Getters', '/getters')?></li>
-                    </ul>
-                    
-
-                    
+                    <span style="float: left; color: white;">
+                        <ul class="topnav">
+                            <li>
+                                <a><?php echo (!empty($dashboard_id) ? $dblist[$dashboard_id] : 'Dashboards'); ?></a>
+                                <ul class="subnav">
+                                    <?php
+                                        foreach($dblist as $id => $name){
+                                            echo "<li>".$this->Html->link($name, '/dashboards/view/'.$id)."</li>";
+                                        }
+                                    ?>
+                                </ul>
+                            </li>
+                            <li><?php echo $this->Html->link('Intervals', '/getters')?></li>
+                        </ul>
+                        
+                            
+                        
+                    </span>
 		</div>
 
                 
 
 		<div id="content">
                     <div id="wrap">
-                    <?php echo $this->Session->flash(); ?>
 
                     <?php echo $content_for_layout; ?>
                         </div>

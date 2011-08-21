@@ -13,6 +13,7 @@ class DashboardsController extends AppController {
 			$this->Session->setFlash(__('Invalid dashboard', true));
 			$this->redirect(array('action' => 'index'));
 		}
+                $this->set('dashboard_id', $id);
 		$this->set('dashboard', $this->Dashboard->read(null, $id));
 	}
 

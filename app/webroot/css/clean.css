@@ -120,8 +120,9 @@ body {
 }
 
 #header {
-	background: #1F1A17;
-	height: 30px;
+	background: #222;
+	background: url(../img/topnav_bg.gif) repeat-x;
+	height: 35px;
 	position: relative;
 }
 #header h1{
@@ -154,7 +155,7 @@ body {
 
 
 #content { width: 100%;}
-#wrap { padding: 20px 0px 0px 20px; }
+#wrap { padding: 8px 0px 0px 8px; }
 
 
 div.login{
@@ -267,4 +268,18 @@ dd {
     background:#fff;
     min-height:100px; margin:5px;
     font-family:'Lucida Grande', Verdana; font-size:0.8em; line-height:1.5em;
-}  
+}
+#flashMessage{
+    position: fixed;
+    float: left;
+    top: 0px;
+    left: 50%;
+    padding: 5px;
+    background-color: white;
+    text-align: center;
+    z-index:10;
+
+    -webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+}

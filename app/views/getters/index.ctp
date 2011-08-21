@@ -1,6 +1,7 @@
 <div class="getters index">
-	<h2><?php __('Getters');?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<h2><?php __('Intervals');?></h2>
+        <p>Intervals are node.js code snippets executed at intervals. Use them to fetch data, perform database maintenance, etc.</p>
+	<table cellpadding="0" cellspacing="0" style="width: 800px;">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
@@ -45,6 +46,6 @@
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Getter', true), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Interval', true), array('action' => 'add')); ?></li>
 	</ul>
 </div>
